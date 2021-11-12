@@ -1,56 +1,23 @@
-// interfaces 
-interface IsPerson {
-    name: string;
+// class 
+class User {
+    name: string
     age: number;
     color?: string;
-    speak(a:string): void;
-    spend(a: number):number;
-}
-const somePerson: IsPerson = {
-    name: 'Amila',
-    age: 21,
-    speak(text:string): void {
-        console.log(text);
-    },
-    spend(amount:number):number {
-        console.log(amount);
-        return amount;
-    }    
-}
-const anotherPerson: IsPerson = {
-    name: 'Sam',
-    age: 2,
-    color: 'green',
-    speak(text:string): void {
-        console.log(text);
-    },
-    spend(amount:number):number {
-        console.log(amount);
-        return amount;
-    }    
-}
-const greedPreson = (person: IsPerson) => {
-    console.log(`Hello ${person.name}`)
-}
-greedPreson(somePerson)
 
-class Person implements IsPerson {
-    name: string
-    age: number
-    constructor(name: string, age: number) {
-        this.name = name
+    // default color set as 'black'
+    constructor(name: string, age: number, color: string = 'black') {
+        this.name = name.trim();
         this.age = age
+        this.color = color;
     }
-    speak(text:string): void{
-        console.log(`voice: ${text}`)
-    }
-    spend(amount:number): number{
-        return amount
+
+    about(): void {
+        console.log(`Name : ${this.name}. Age : ${this.age}. Color : ${this.color ? this.color : 'n/a'}`)
     }
 }
 
-const person = new Person('amila', 20)
 
-person.speak(`I'm amila. Who are you ?`)
-const spendAmount = person.spend(20)
-console.log(`person spent : ${spendAmount}`)
+const user1 = new User('Amila', 25);
+user1.about();
+const user2 = new User('Sampath', 26, 'red')
+user2.about();
